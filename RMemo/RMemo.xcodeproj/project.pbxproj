@@ -13,6 +13,7 @@
 		453098C924867BE7009D2AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 453098C824867BE7009D2AE7 /* Assets.xcassets */; };
 		453098CC24867BE7009D2AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453098CA24867BE7009D2AE7 /* LaunchScreen.storyboard */; };
 		453098D5248689FC009D2AE7 /* Midel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098D4248689FC009D2AE7 /* Midel.swift */; };
+		453098D724868D37009D2AE7 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098D624868D37009D2AE7 /* MemoListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		453098CB24867BE7009D2AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		453098CD24867BE7009D2AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		453098D4248689FC009D2AE7 /* Midel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midel.swift; sourceTree = "<group>"; };
+		453098D624868D37009D2AE7 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				453098C824867BE7009D2AE7 /* Assets.xcassets */,
 				453098CA24867BE7009D2AE7 /* LaunchScreen.storyboard */,
 				453098CD24867BE7009D2AE7 /* Info.plist */,
+				453098D624868D37009D2AE7 /* MemoListTableViewController.swift */,
 			);
 			path = RMemo;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				453098D5248689FC009D2AE7 /* Midel.swift in Sources */,
 				453098C024867BE4009D2AE7 /* AppDelegate.swift in Sources */,
 				453098C224867BE4009D2AE7 /* SceneDelegate.swift in Sources */,
+				453098D724868D37009D2AE7 /* MemoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
