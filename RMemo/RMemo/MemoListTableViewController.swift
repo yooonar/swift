@@ -9,7 +9,16 @@
 import UIKit
 
 class MemoListTableViewController: UITableViewController {
-
+    // 날짜 타입 default: 영어, locale 사용하여 한글로 변경 가능
+    let formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .short
+        // locale: 기본 형식을 영어 > 한글로 바꿔줌
+        // f.locale = Locale(identifier: "Ko_kr")
+        return f
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +42,12 @@ class MemoListTableViewController: UITableViewController {
         // Configure the cell...
         let target = Memo.dummyMemoList[indexPath.row]
         cell.textLabel?.text = target.content
-        cell.detailTextLabel?.text = target.insertDate.description
+
+        // 데이트 타입 없는 기본 형식 Eg. 2020-06-06 23:30:49
+        // cell.detailTextLabel?.text = target.insertDate.description
+        
+        // 데이트 타입 있는 기본 형식 Eg. 영어 > June 6, 2020 at 11:30 PM / 한글 > 2020년 6월 6일 오후 11시 30분
+        cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
 
         return cell
     }
