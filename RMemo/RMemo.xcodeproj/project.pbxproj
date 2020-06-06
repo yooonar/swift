@@ -15,6 +15,7 @@
 		453098D5248689FC009D2AE7 /* Midel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098D4248689FC009D2AE7 /* Midel.swift */; };
 		453098D724868D37009D2AE7 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098D624868D37009D2AE7 /* MemoListTableViewController.swift */; };
 		453098D9248BE3AF009D2AE7 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098D8248BE3AF009D2AE7 /* ComposeViewController.swift */; };
+		453098DB248BE6BE009D2AE7 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098DA248BE6BE009D2AE7 /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		453098D4248689FC009D2AE7 /* Midel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Midel.swift; sourceTree = "<group>"; };
 		453098D624868D37009D2AE7 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		453098D8248BE3AF009D2AE7 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		453098DA248BE6BE009D2AE7 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				453098D4248689FC009D2AE7 /* Midel.swift */,
+				453098DA248BE6BE009D2AE7 /* UIViewController+Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				453098D9248BE3AF009D2AE7 /* ComposeViewController.swift in Sources */,
 				453098D5248689FC009D2AE7 /* Midel.swift in Sources */,
 				453098C024867BE4009D2AE7 /* AppDelegate.swift in Sources */,
+				453098DB248BE6BE009D2AE7 /* UIViewController+Alert.swift in Sources */,
 				453098C224867BE4009D2AE7 /* SceneDelegate.swift in Sources */,
 				453098D724868D37009D2AE7 /* MemoListTableViewController.swift in Sources */,
 			);

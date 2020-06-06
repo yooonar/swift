@@ -17,6 +17,26 @@ class ComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBOutlet weak var memoTextView: UITextView!
+
+    @IBAction func save(_ sender: Any) {
+        // 텍스트뷰에 저장된 내용을 가져와 기존에 불러왔던 목록 배열인 dummyMemoList 배열에 저장해야함
+        
+        // 텍스트 뷰에 저장된 내용을 상수로 지정
+        guard let memo = memoTextView.text, memo.count > 0 else {
+            // 경고창 표시
+            alert(message: "메모를 입력하세요.")
+            return
+        }
+        
+        // 새로운 인스턴스 생성, 배열에 저장
+        let newMemo = Memo(content: memo)
+        Memo.dummyMemoList.append(newMemo)
+        
+        // 저장 후 새 메모 화면 닫기
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
