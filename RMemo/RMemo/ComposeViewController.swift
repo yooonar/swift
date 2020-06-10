@@ -33,6 +33,10 @@ class ComposeViewController: UIViewController {
         let newMemo = Memo(content: memo)
         Memo.dummyMemoList.append(newMemo)
         
+        // 화면을 닫기 전에 notification을 전달
+        // NotificationCenter.default.post에서 전달한 notification을 처리해야하는데 옵저버를 등록하고 필요한 코드를 구현하는 방식으로 처리: 라디오 주파수 맞추기
+        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        
         // 저장 후 새 메모 화면 닫기
         dismiss(animated: true, completion: nil)
     }
@@ -54,4 +58,11 @@ class ComposeViewController: UIViewController {
     }
     */
 
+}
+
+// notification: 라디오 방송: 주파수를 통해 구분 Eg. 91.9 107.7 ..
+// notificationCenter: 라디오 방송국: 이름으로 구분 Eg. KBS, SBS..
+extension ComposeViewController {
+    // notification 이름 추가
+    static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
 }

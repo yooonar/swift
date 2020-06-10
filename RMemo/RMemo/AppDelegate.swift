@@ -11,7 +11,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    // 세그웨이가 기본값(same to destination)인 경우 -> 13버전: 실행 가능, 12버전 이하: 실행 불가능
+    // 이를 해결하기 위에 윈도우 속성 추가
+    var window: UIWindow?
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
