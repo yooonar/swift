@@ -10,6 +10,21 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    // 이전 화면에서 전달한 메모를 저장할 속성을 추가
+    // 뷰 컨트롤러가 초기화되는 시점에서는 값이 없기 때문에 옵셔널(? 표기) 로 선언
+    // MemoListTableViewController->prepare 에서 이곳으로 전달해줌
+    var memo: Memo?
+    
+    // 날짜 포맷 변경
+    let formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .short
+        // locale: 기본 형식을 영어 > 한글로 바꿔줌
+        // f.locale = Locale(identifier: "Ko_kr")
+        return f
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,9 +63,13 @@ extension DetailViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0: // 1번 셀: 메모
             let cell = tableView.dequeueReusableCell(withIdentifier: "memoCell", for: indexPath)
+            cell.textLabel?.text = memo?.content
             return cell
         case 1: // 2번 셀: 날짜
             let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath)
+            // formatter.string(from) <- from 에는 옵셔널 값을 전달할 수 없다.
+            // 하지만 우리는 옵셔널 값을 저장해야하기 때문에 옵셔널 바인딩을 사용하거나 formatter.string(for) 를 사용해야한다.
+            cell.textLabel?.text = formatter.string(for: memo?.insertDate)
             return cell
         default: // 오류
             fatalError()
