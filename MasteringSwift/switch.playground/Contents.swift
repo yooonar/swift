@@ -67,6 +67,7 @@ default:
 
 /*:
  # Fall Through
+ 이어지는 블록을 실행할 땐 다음 조건을 신경쓰지 않음
  */
 let num2 = 2
 switch num2 {
@@ -78,4 +79,31 @@ case 3:
     print("three")
 default:
     break
+}
+/*:
+ ## Fall Through 예시
+ 로그인을 구현할 때 로그인 실패를 9번까지는 그냥 경고만 출력, 10번쨰는 경고를 출력한다음 리셋, 그 이상은 경고없이 바로 리셋
+ 중복 소스를 줄여줌
+ */
+let attempts = 10
+
+// Fall Through 사용 전
+switch attempts {
+case ..<10:
+    print("warning")
+case 10:
+    print("warning")
+    print("reset")
+default:
+    print("reset")
+}
+// Fall Through 사용 후
+switch attempts {
+case ..<10:
+    print("warning")
+case 10:
+    print("warning")
+    fallthrough
+default:
+    print("reset")
 }
