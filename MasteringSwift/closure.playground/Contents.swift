@@ -34,7 +34,7 @@ import UIKit
  문자열을 출력하는 가장 단순한 클로저 = parameter 와 returnType이 생략된 클로저
  { print("Hello, Swift") }
  ↑ 이 때 컴파일 에러 발생! ← 클로저 표현식은 글로벌 스코프에서 단독으로 작성할 수 없음. 해결책: 상수에 저장
- 자료형: () -> () parameter가 없고 return형이 없는 클로저
+ 자료형: () -> () ← parameter가 없고 return형이 없는 클로저
  자료형이 동일하기 때문에 함수와 호환 가능
  함수를 전달하는 곳에 클로저를 전달하고, 클로저를 전달하는 곳에 함수를 전달하는 것도 가능
  */
@@ -42,7 +42,7 @@ import UIKit
 // 클로저는 이름이 없는 함수인데 c(상수)라는 이름을 붙인 것과 같음
 let c = { print("Hello, Swift") }
 
-// 클로저 출력ㄴ
+// 클로저 출력
 c() // output: Hello, Swift
 
 
@@ -82,4 +82,10 @@ func perform(closure: SimpleStringClosure) {
 }
 
 // 3. perform 함수 호출 시 Argument로 전달한 c2가 perform() 함수의 parameter(closure: SimpleStringClosure) 로 전달된다.
+// c2 상수에 저장되어있는 클로저를 그대로 전달
 perform(closure: c2)
+
+// 클로저 자체를 직접 argument로 전달하는 것도 가능
+perform(closure: { (str: String) -> String in
+    return "Hi, \(str)"
+})
