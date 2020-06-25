@@ -10,17 +10,17 @@ import UIKit
     (Global) Function
     Nested Function
 
- ## Unnamed Closures ← 클로저(이름이 없는 함수, 클로저라고 부름)
+ ## Unnamed Closures ← 익명 함수, 클로저(이름이 없는 함수, 클로저라고 부름)
     Anonymous Function
  */
 
 /*:
  # Closures
  
- ## 기본 문법
+ ## 클로저 표현식 기본 문법
  // 함수와 클로저는 서로 호환됨
- // 클로저는 func 키워드 없음, 클로저 헤드와 바디를 in 키워드로 구분함
- // 함수와 마찬가지로 parameter와 return형을 생략 가능함. 이 때 in 키워드도 같이 생략 가능
+ // 클로저는 func 키워드 없음, 클로저 헤드(parameter부터 returnType까지) 와 클로저 바디(내용) 를 in 키워드로 구분함
+ // 함수와 마찬가지로 parameter와 return형을 생략 가능함. 이 때 in 키워드도 같이 생략됨
  { (parameters) -> ReturnType in
     statements
  }
@@ -31,9 +31,9 @@ import UIKit
 
 
 /*:
- 문자열을 출력하는 가장 단순한 클로저 = parameter 와 returnType이 생략된 문법
+ 문자열을 출력하는 가장 단순한 클로저 = parameter 와 returnType이 생략된 클로저
  { print("Hello, Swift") }
- ↑ 이 경우 컴파일 에러 발생. 클로저 표현식은 글로벌 스코프에서 단독으로 작성할 수 없음. 해결책: 상수에 저장
+ ↑ 이 때 컴파일 에러 발생! ← 클로저 표현식은 글로벌 스코프에서 단독으로 작성할 수 없음. 해결책: 상수에 저장
  자료형: () -> () parameter가 없고 return형이 없는 클로저
  자료형이 동일하기 때문에 함수와 호환 가능
  함수를 전달하는 곳에 클로저를 전달하고, 클로저를 전달하는 곳에 함수를 전달하는 것도 가능
@@ -42,7 +42,7 @@ import UIKit
 // 클로저는 이름이 없는 함수인데 c(상수)라는 이름을 붙인 것과 같음
 let c = { print("Hello, Swift") }
 
-// 클로저 출력
+// 클로저 출력ㄴ
 c() // output: Hello, Swift
 
 
