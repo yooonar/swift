@@ -102,7 +102,7 @@ fruits[fruits.startIndex]
 // index(before) 를 이용해 마지막 인덱스의 이전 인덱스를 구해야함
 fruits[fruits.index(before: fruits.endIndex)]
 
-ㄴ
+
 /*:
  # subscript 를 사용하지 않고 속성에 접근하는 방법
  first, last의 장점
