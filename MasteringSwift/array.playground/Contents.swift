@@ -63,3 +63,62 @@ print(zeroArray)
  # Inspecting an Array
  배열에 저장된 요소의 숫자 확인
  */
+
+// 배열 요소의 숫자 확인 Int로 타입으로 리턴
+// 배열이 빈 값인지만 확인하려면 count 를 0인 경우로 체크할 수 있음
+nums.count
+
+// 빈 값 확인은 count 보다 보통 isEempty 함수를 사용하는게 더 좋다
+nums.isEmpty
+numbers.isEmpty
+emptyArray.isEmpty
+emptyArray2.isEmpty
+emptyArray3.isEmpty
+
+/*:
+ # Accessing Elements
+ ## 배열에 저장된 요소에 접근
+    배열명[접근할 요소의 인덱스]
+ */
+let fruits = ["Apple", "Banana", "Melon"]
+
+// 배열의 요소에 접근할 때는 subscript 문법을 사용
+
+// 배열에 저장된 첫번째 요소에 접근
+fruits[0]
+
+// 배열에 저장된 마지막 요소에 접근
+fruits[2]
+
+// subscript로 특정 범위 전달
+fruits[0...1]
+
+// 속성으로 제공되는 인덱스를 사용하는 것이 안전
+// startIndex 속성을 이용해 첫번째 요소에 접근
+fruits[fruits.startIndex]
+
+// endIndex 속성을 이용해 마지막 요소에 접근
+// endIndex: 마지막 인덱스의 다음 인덱스
+// index(before) 를 이용해 마지막 인덱스의 이전 인덱스를 구해야함
+fruits[fruits.index(before: fruits.endIndex)]
+
+ㄴ
+/*:
+ # subscript 를 사용하지 않고 속성에 접근하는 방법
+ first, last의 장점
+ subscript 에 비해 오류가 나지않아 안전함
+ 마지막 요소에 접근할 때 인덱스 연산이 필요없어 코드가 단순하다
+ */
+
+// first: String? ← 옵셔널 스트링. 배열에 첫번째 요소가 있다면 첫번째 요소 리턴, 비어있다면 nil 리턴
+fruits.first
+// last: String? ← 옵셔널스트링. 배열에 마지막 요소가 있다면 마지막 요소 리턴, 비어있다면 nil 리턴
+fruits.last
+
+// 비어있는 배열에서 사용
+emptyArray.first
+emptyArray.last
+
+// subscript 를 사용하여 첫번째 요소에 접근
+// 접근할 요소가 없기 때문에 에러 발생
+// emptyArray[0]
