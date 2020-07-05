@@ -9,6 +9,8 @@
 import Foundation
 
 // 메모 클래스 선언
+/*
+// 2020-07-05 DB 구현하면서 주석처리
 class Memo {
     // 내용
     var content: String
@@ -27,3 +29,4 @@ class Memo {
         Memo(content: "Thank's! 💜")
     ]
 }
+*/

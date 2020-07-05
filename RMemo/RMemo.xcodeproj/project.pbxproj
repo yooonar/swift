@@ -18,6 +18,8 @@
 		453098DB248BE6BE009D2AE7 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098DA248BE6BE009D2AE7 /* UIViewController+Alert.swift */; };
 		453098DD2495E872009D2AE7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453098DC2495E872009D2AE7 /* DetailViewController.swift */; };
 		453098E02495F18A009D2AE7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453098DF2495F18A009D2AE7 /* WebKit.framework */; };
+		45B0C54A24B2069900CD46DA /* RMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C54824B2069900CD46DA /* RMemo.xcdatamodeld */; };
+		45B0C54D24B20A2400CD46DA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0C54C24B20A2400CD46DA /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		453098DA248BE6BE009D2AE7 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		453098DC2495E872009D2AE7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		453098DF2495F18A009D2AE7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		45B0C54924B2069900CD46DA /* RMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMemo.xcdatamodel; sourceTree = "<group>"; };
+		45B0C54C24B20A2400CD46DA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		453098BE24867BE4009D2AE7 /* RMemo */ = {
 			isa = PBXGroup;
 			children = (
+				45B0C54B24B20A0900CD46DA /* Data */,
+				45B0C54824B2069900CD46DA /* RMemo.xcdatamodeld */,
 				453098D3248689D4009D2AE7 /* Model */,
 				453098BF24867BE4009D2AE7 /* AppDelegate.swift */,
 				453098C124867BE4009D2AE7 /* SceneDelegate.swift */,
@@ -97,6 +103,14 @@
 				453098DF2495F18A009D2AE7 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45B0C54B24B20A0900CD46DA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				45B0C54C24B20A2400CD46DA /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,10 +186,12 @@
 			files = (
 				453098D9248BE3AF009D2AE7 /* ComposeViewController.swift in Sources */,
 				453098D5248689FC009D2AE7 /* Midel.swift in Sources */,
+				45B0C54A24B2069900CD46DA /* RMemo.xcdatamodeld in Sources */,
 				453098C024867BE4009D2AE7 /* AppDelegate.swift in Sources */,
 				453098DB248BE6BE009D2AE7 /* UIViewController+Alert.swift in Sources */,
 				453098C224867BE4009D2AE7 /* SceneDelegate.swift in Sources */,
 				453098D724868D37009D2AE7 /* MemoListTableViewController.swift in Sources */,
+				45B0C54D24B20A2400CD46DA /* DataManager.swift in Sources */,
 				453098DD2495E872009D2AE7 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +395,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		45B0C54824B2069900CD46DA /* RMemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				45B0C54924B2069900CD46DA /* RMemo.xcdatamodel */,
+			);
+			currentVersion = 45B0C54924B2069900CD46DA /* RMemo.xcdatamodel */;
+			path = RMemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 453098B424867BE4009D2AE7 /* Project object */;
 }

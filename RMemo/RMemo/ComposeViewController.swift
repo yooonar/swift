@@ -30,9 +30,11 @@ class ComposeViewController: UIViewController {
         }
         
         // 새로운 인스턴스 생성, 배열에 저장
+        /*
+        // 2020-07-05 DB 구현하면서 주석처리
         let newMemo = Memo(content: memo)
         Memo.dummyMemoList.append(newMemo)
-        
+        */
         // 화면을 닫기 전에 notification을 전달
         // NotificationCenter.default.post에서 전달한 notification을 처리해야하는데 옵저버를 등록하고 필요한 코드를 구현하는 방식으로 처리: 라디오 주파수 맞추기
         NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)

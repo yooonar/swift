@@ -23,6 +23,13 @@ class MemoListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // 뷰 컨트롤러가 관리하는 뷰가 화면에 표시되기 직전에 호출됨
+        // 여기서 fetchMemo 메소드를 호출하고 tableView에서 reloadData 를 호출
+
+        // 배열이 data로 채워짐
+        DataManager.shared.fetchMemo()
+        tableView.reloadData()
+        
 
         /*
         // ios 12 버전에서만 사용 가능 <- 옵저버 기능 구현 시 필요없음
@@ -58,8 +65,13 @@ class MemoListTableViewController: UITableViewController {
             // segue.destination: 새롭게 표시되는 화면 <- destination의 속성은 기본 UIViewController 임
             // 메모를 전달하기 위해서는 실제 형식인 DetailViewController 로 파일 캐스팅 해야함
             if let vc = segue.destination as? DetailViewController {
+                /*
+                 // 2020-07-05 DB 구현하면서 주석처리
+                 // vc.memo : 메모 속성에 접근 가능
+                 vc.memo = Memo.dummyMemoList[indexPath.row]
+                 */
                 // vc.memo : 메모 속성에 접근 가능
-                vc.memo = Memo.dummyMemoList[indexPath.row]
+                vc.memo = DataManager.shared.memoList[indexPath.row]
             }
             
         }
@@ -99,21 +111,35 @@ class MemoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Memo.dummyMemoList.count
+        /*
+         // 2020-07-05 DB 구현하면서 주석처리
+         return Memo.dummyMemoList.count
+         */
+        return DataManager.shared.memoList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        // Configure the cell...
-        let target = Memo.dummyMemoList[indexPath.row]
+        /*
+         // 2020-07-05 DB 구현하면서 주석처리
+         // Configure the cell...
+         let target = Memo.dummyMemoList[indexPath.row]
+         */
+        let target = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = target.content
 
         // 데이트 타입 없는 기본 형식 Eg. 2020-06-06 23:30:49
         // cell.detailTextLabel?.text = target.insertDate.description
         
-        // 데이트 타입 있는 기본 형식 Eg. 영어 > June 6, 2020 at 11:30 PM / 한글 > 2020년 6월 6일 오후 11시 30분
-        cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
+        /*
+         // 2020-07-05 DB 구현하면서 주석처리
+         // 데이트 타입 있는 기본 형식 Eg. 영어 > June 6, 2020 at 11:30 PM / 한글 > 2020년 6월 6일 오후 11시 30분
+         cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
+         */
+        // insertDate 속성이 옵셔널인 경우 에러 발생!
+        // String(from) 메소드는 옵셔널 값을 받을 수 없어서 옵셔널 값을 받는 String(for) 로 변경해주어야 한다.
+        cell.detailTextLabel?.text = formatter.string(for: target.insertDate)
 
         return cell
     }
