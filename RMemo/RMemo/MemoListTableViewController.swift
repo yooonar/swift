@@ -19,6 +19,7 @@ class MemoListTableViewController: UITableViewController {
         return f
     }()
     
+    // viewWillAppear 메소드는 앱을 처음 실행할 때 실행됨
     // 목록에 새로 저장된 메모를 불러오기 위해 새로운 메소드 추가
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

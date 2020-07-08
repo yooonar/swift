@@ -46,6 +46,31 @@ class DataManager {
         
     }
     
+    
+    func addNemMemo (_ memo: String?) {
+        // 새로운 메모 인스턴스 생성
+        // Memo: 이 메모 클래스는 우리가 만든 클래스가 아니라 코어 데이터가 만든 클래스이다.
+        // 그래서 새로운 인스턴스를 만들 때 생성자로 context 를 전달해야한다.
+        // 이렇게하면 데이터베이스에 메모를 저장하는데 필요한 비어있는 인스턴스가 생성된 것이다.
+        let newMemo = Memo(context: mainContext)
+        
+        // 비어있는 인스턴스에 값 채우기
+        // parameter 로 전달받은 memo 를 content 에 저장
+        newMemo.content = memo
+        
+        // 현재 날짜를 insertDate 에 저장
+        newMemo.insertDate = Date()
+        
+        // 메모를 저장하고나면 데이터를 업데이트 해주기 위해 memoList 배열을 새로고침 해준다.
+        // .append: 뒷부분에 추가, .insert: 앞부분에 추가
+        memoList.insert(newMemo, at: 0)
+        
+        // 이렇게 새로운 메모 인스턴스를 생성했다고 해서 Memo 가 데이터베이스에 저장되는 것은 아니다.
+        // 실제로 데이터베이스 파일을 저장하고 싶다면 context 를 저장해야한다.
+        // context 를 저장하는 메소드는 아래에 있는 saveContext 이다. 이 메소드를 그대로 호출하면 된다.
+        saveContext()
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

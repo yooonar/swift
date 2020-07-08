@@ -35,6 +35,7 @@ class ComposeViewController: UIViewController {
         let newMemo = Memo(content: memo)
         Memo.dummyMemoList.append(newMemo)
         */
+        DataManager.shared.addNemMemo(memo)
         // 화면을 닫기 전에 notification을 전달
         // NotificationCenter.default.post에서 전달한 notification을 처리해야하는데 옵저버를 등록하고 필요한 코드를 구현하는 방식으로 처리: 라디오 주파수 맞추기
         NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
