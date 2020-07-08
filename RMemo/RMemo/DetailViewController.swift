@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var memoTableView: UITableView!
+    
+    
     // 이전 화면에서 전달한 메모를 저장할 속성을 추가
     // 뷰 컨트롤러가 초기화되는 시점에서는 값이 없기 때문에 옵셔널(? 표기) 로 선언
     // MemoListTableViewController->prepare 에서 이곳으로 전달해줌
@@ -34,9 +37,20 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // notification 토큰을 저장
+    var token: NSObjectProtocol?
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidChange, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            self?.memoTableView.reloadData()
+        })
         // Do any additional setup after loading the view.
     }
     

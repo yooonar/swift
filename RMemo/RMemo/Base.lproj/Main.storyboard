@@ -137,6 +137,9 @@
                         <viewLayoutGuide key="safeArea" id="bwd-bT-Hgn"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="tYo-yc-XVl"/>
+                    <connections>
+                        <outlet property="memoTableView" destination="e3Y-L1-J9S" id="qsS-EY-BSQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUQ-5i-4Jb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
