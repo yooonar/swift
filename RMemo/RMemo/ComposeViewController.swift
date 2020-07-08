@@ -10,6 +10,9 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
+    // 보기 화면에서 전달한 메모를 이 속성에 저장
+    var editTarget: Memo?
+
     @IBAction func close(_ sender: Any) {
         // dismiss: 화면을 닫을 때 효과, 보통 화면을 열 땐 모달창
         // animate true: 화면을 닫을 때 애니메이션 효과 주는 것

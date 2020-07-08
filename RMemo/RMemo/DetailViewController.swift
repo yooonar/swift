@@ -25,6 +25,15 @@ class DetailViewController: UIViewController {
         return f
     }()
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 툴바에 있는 버튼을 탭할 때 세그웨이 실행
+        // sender 로 툴바에 있는 버튼이 전달됨
+        if let vc = segue.destination.children.first as? ComposeViewController {
+            // 내비게이션 컨트롤러가 관리하는 첫번째 뷰컨트롤러(ConposeViewController) 로 메모가 전달됨 
+            vc.editTarget = memo
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
