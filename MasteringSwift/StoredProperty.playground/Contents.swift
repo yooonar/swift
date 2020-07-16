@@ -141,5 +141,55 @@ struct BlogPost {
 
 // 새로운 인스턴스 선언
 // attachment 속성을 저장 속성으로 선언하면 인스턴스가 초기화되는 시점에 새로운 이미지 인스턴스가 저장된다.
+// 그래서 이 코드를 실행하면 생성자에 추가해둔 로그 new image 가 출력된다.
 let post = BlogPost()
 // output: new image
+
+/*
+ 이런 방식은 매번 인스턴스를 생성할 때마다 파일이나 네트워크에서 이미지를 가져온다음, 메모리 공간에 복사해야하기 때문에 오버헤드가 발생한다.
+ attachment 속성을 항상 사용한다면 어쩔 수 없지만 이 속성에 접근하지 않는 경우에는 불필요한 메모리를 사용하게 된다.
+ attachment 를 지연 저장 속성으로 바꾸고 결과를 비교해보자.
+ */
+
+
+struct BlogPost2 {
+    let title: String = "Title"
+    let content: String = "Content"
+    
+    // lazy let attachment: Image = Image() ← Error! : Expected 'lazy' cannot be used on a let
+    // lazy 는 let 상수로는 사용 불가, var 로 변경해줘야함
+    lazy var attachment: Image = Image()
+    
+    // 날짜 속성 추가 - 현재 날짜로 초기화
+    let date: Date = Date()
+}
+
+var post2 = BlogPost2()
+/*
+ post2 의 경우 실행해도 로그 new image 는 출력되지 않는다.
+ BlogPost2 인스턴스가 생성되고 Title 속성과 Content 속성은 초기화 되었지만 attachment 속성은 아직 초기화되지 않았다.
+ 바로 이어서 속성에 접근해보자.
+ */
+
+// post2.attachment 속성에 접근하는 경우 오류 발생
+// Error! : Cannot use mutating getter on immutable value: 'post2' is a 'let' constant
+// 구조체 인스턴스를 상수 let 으로 저장하고 있다. 이렇게 하면 모든 속성이 상수가 된다.
+// 다시말해 인스턴스가 초기화 된 다음에는 값을 변경할 수 없다.
+// attachment 에 접근하는 시점에 값을 바꿔야 하는데(초기화 해야하는데) 구조체 전체가 상수가 되어있기 때문에 값을 바꿀 수 없다.
+// 구조체에서 지연 저장 속성을 사용한다면 인스턴스를 변수에 저장해야한다.
+// let post2 = BlogPost2() 이 아닌 var post2 = BlogPost2() 로 변경해야함
+// 속성에 처음 접근하는 시점에 생성자가 실행고 init() 에 있는 print 함수가 실행됨
+post2.attachment
+
+/*
+ BlogPost 구조체를 보면 처음 두 속성 Title, Content 는  문자열 리터럴로 초기화 하고 있다.
+ 보통은 이렇게 리터럴로 초기화 하는데 마지막 속성 attachment 를 보면 생성자를 호출하고 있다.
+ 여기에는 함수를 호출하는 코드를 써도 되고, 연산자로 계산하는 코드를 써도 된다.
+ 표현식이 리턴하는 값이 속성 형식과 동일하다면 문제없다.
+ 
+ 이 패턴을 좀 더 응용해보자.
+ 
+ let date: Date = Date() 속성을 추가해 현재 날짜로 초기화한다.
+ 이 속성에 저장된 날짜를
+ */
+
