@@ -162,6 +162,26 @@ struct BlogPost2 {
     
     // 날짜 속성 추가 - 현재 날짜로 초기화
     let date: Date = Date()
+    
+    // formattedDate 에 초기값을 선언해야하는데 여기에는 값만 오는 게 아니라 어떤 표현식이든 올 수 있다.
+    // 날짜를 문자열로 바꾸는 코드는 한 줄로 구현하기 어렵다. 이 때는 클로저를 사용해서 초기화를 하자.
+    lazy var formattedDate: String = {
+       let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .medium
+        return f.string(from: date)
+    }() // ← 여기에서 핵심은 클로저 뒤에 있는 이 괄호 () 이다
+    // 만약 여기서 이 괄호 () 를 빼게 되면 parameter 가 없고 return 형이 String 인 클로저가 속성에 저장된다.
+    // 이렇게 괄호 () 를 붙이면 클로저가 초기화 시점에 호출된다.
+    // 그래서 클로저가 리턴하는 값이 속성에 저장되는 것이다.
+    // 이 패턴은 실제 프로젝트에서 자주 활용되는 패턴이다.
+    
+    /*
+     여기에서 주의할 점은 지금은 지연 저장 속성으로 선언되어있기 떄문에 속성에 처음 접근하는 시점에 클로저가 호출된다.
+     return f.string(from: date) ← 여기에서 date 속성에 접근하고 있는데 클로저가 호출되는 시점에는 속성이 이미 초기화가 된 상태이다.
+     
+     여기서 formattedDate 에 있는 lazy 속성을 제거하면 오류가 발생한다.
+     */
 }
 
 var post2 = BlogPost2()
@@ -190,6 +210,7 @@ post2.attachment
  이 패턴을 좀 더 응용해보자.
  
  let date: Date = Date() 속성을 추가해 현재 날짜로 초기화한다.
- 이 속성에 저장된 날짜를
+ 이 속성에 저장된 날짜를 문자열로 바꿔서 새로운 속성을 저장해보자.
  */
+
 
