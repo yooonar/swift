@@ -88,4 +88,23 @@ print(rawStr)
 // 간단한 우편번호 정규식
 var zipCodeRegex = "^\\d{3}-?\\d{3}$"
 
-// 정규식에서 메타 문자도 \ 로 표현하는데
+// 정규식에서 메타 문자도 \ 로 시작하는데 메타문자를 그대로 문자열 리터럴에 추가하면 이스케이프식으로 인식됨.
+// \ 하나만 넣으면 문법상 에러가 발생하기 때문에 \\ 로 넣어준다.
+
+let zipCode = "123-456"
+if let _ = zipCode.range(of: zipCodeRegex, options: [.regularExpression]) {
+    // zipCode 가 제대로 된 우편번호라고 판단될 때
+    print("valid")
+}
+// output: valid
+
+
+var zipCodeRegex2 = #"^\d{3}-?\d{3}$"#
+let zipCode2 = "123-456"
+if let _ = zipCode2.range(of: zipCodeRegex2, options: [.regularExpression]) {
+    // zipCode2 가 제대로 된 우편번호라고 판단될 때
+    print("valid")
+}
+// output: valid
+
+//불필요한 \ 가 제거되어 문자열의 가독성이 높아졌다.
