@@ -18,3 +18,4 @@ import UIKit
  zoo(closure: { (param: Int) in print(param) } )    ===     zoo( closure: { print(param) } )
  zoo(closure: { (param: Int) in print(param) } )    ===     zoo { print(param) }
  */
+print("yagom syntax overview")
